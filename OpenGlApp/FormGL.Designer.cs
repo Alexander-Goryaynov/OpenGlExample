@@ -40,7 +40,7 @@
             this.openGLControl.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.openGLControl.RenderContextType = SharpGL.RenderContextType.DIBSection;
             this.openGLControl.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            this.openGLControl.Size = new System.Drawing.Size(776, 426);
+            this.openGLControl.Size = new System.Drawing.Size(1001, 544);
             this.openGLControl.TabIndex = 0;
             this.openGLControl.OpenGLDraw += new SharpGL.RenderEventHandler(this.openGLControl_OpenGLDraw);
             this.openGLControl.Load += new System.EventHandler(this.openGLControl_Load);
@@ -49,7 +49,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 521);
+            this.ClientSize = new System.Drawing.Size(1025, 568);
             this.Controls.Add(this.openGLControl);
             this.Name = "FormGL";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
