@@ -44,6 +44,8 @@
             this.openGLControl.TabIndex = 0;
             this.openGLControl.OpenGLDraw += new SharpGL.RenderEventHandler(this.openGLControl_OpenGLDraw);
             this.openGLControl.Load += new System.EventHandler(this.openGLControl_Load);
+            this.openGLControl.Click += new System.EventHandler(this.openGLControl_Click);
+            this.openGLControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.openGLControl_KeyDown);
             // 
             // FormGL
             // 
