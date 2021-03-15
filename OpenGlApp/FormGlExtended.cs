@@ -1,19 +1,17 @@
-﻿using System;
+﻿using SharpGL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SharpGL;
 
 namespace OpenGlApp
 {
-    public partial class FormGL : Form
+    public partial class FormGlExtended : Form
     {
         private const int gridLinesCount = 14;
         // длина ребра "1" - "2"
@@ -42,7 +40,7 @@ namespace OpenGlApp
         // шаг радиуса камеры при зуме
         private const double zoomStep = 1.0;
         OpenGL gl;
-        public FormGL()
+        public FormGlExtended()
         {
             InitializeComponent();
             gl = openGLControl.OpenGL;
@@ -186,7 +184,7 @@ namespace OpenGlApp
 
         private void moveObject(Direction dir)
         {
-            switch(dir)
+            switch (dir)
             {
                 case Direction.LEFT:
                     x += objStep;
@@ -199,7 +197,7 @@ namespace OpenGlApp
 
         private void scaleObject(Direction dir)
         {
-            switch(dir)
+            switch (dir)
             {
                 case Direction.NEARER:
                     camR -= zoomStep;
@@ -227,7 +225,7 @@ namespace OpenGlApp
 
         private void openGLControl_KeyDown(object sender, KeyEventArgs e)
         {
-            switch(e.KeyCode)
+            switch (e.KeyCode)
             {
                 case Keys.A:
                     moveObject(Direction.LEFT);
@@ -241,7 +239,7 @@ namespace OpenGlApp
                 case Keys.S:
                     scaleObject(Direction.FARTHER);
                     break;
-            }            
+            }
             openGLControl_Load(sender, e);
         }
     }

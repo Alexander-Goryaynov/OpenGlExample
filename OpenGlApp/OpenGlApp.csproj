@@ -66,6 +66,12 @@
     <Compile Include="FormGL.Designer.cs">
       <DependentUpon>FormGL.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGlExtended.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGlExtended.Designer.cs">
+      <DependentUpon>FormGlExtended.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormGL.resx">

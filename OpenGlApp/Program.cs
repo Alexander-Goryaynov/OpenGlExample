@@ -16,7 +16,7 @@ namespace OpenGlApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormGL());
+            Application.Run(new FormGlExtended());
         }
     }
 }
