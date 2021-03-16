@@ -61,7 +61,7 @@ namespace OpenGlApp
             camY = camR;
             camAng = 0;
             camTimer = new Timer();
-            camTimer.Tick += new EventHandler(rotateCamera);
+            camTimer.Tick += new EventHandler(RotateCamera);
             camTimer.Interval = camTimerInterval;
             isCamTimerActive = false;
             isLightingEnabled = false;
@@ -98,9 +98,9 @@ namespace OpenGlApp
             DrawGrid();
             //DrawObject();
             //DrawSpheres();
-
+            DrawDumbbell();
             //DrawCylinder();
-            displayTextureFromFile(@"C:\Users\Александр\Desktop\unknown.bmp");
+            DisplayTextureFromFile(@"C:\Users\Александр\Desktop\unknown.bmp");
         }
 
         private void DrawGrid()
@@ -180,6 +180,38 @@ namespace OpenGlApp
             gl.PopMatrix();
         }
 
+        private void DrawDumbbell()
+        {
+            // Рукоятка
+            var i = gl.NewQuadric();
+            gl.PushMatrix();
+            gl.Translate(-2.5, 0, 0);
+            gl.Rotate(0, 90, 90);
+            gl.QuadricDrawStyle(i, OpenGL.GLU_FILL);
+            gl.Cylinder(i, 1, 1, 7.5, 25, 25);
+            gl.PopMatrix();
+
+            // Шары
+
+            i = gl.NewQuadric();
+            gl.PushMatrix();
+            gl.Translate(-4, 0, 0);
+            gl.Rotate(90, 0, 0);
+            gl.Color(Color.Red);
+            gl.QuadricDrawStyle(i, OpenGL.GLU_FILL);
+            gl.Sphere(i, 2.5, 25, 25);
+            gl.PopMatrix();
+
+            i = gl.NewQuadric();
+            gl.PushMatrix();
+            gl.Translate(4, 0, 0);
+            gl.Rotate(90, 0, 0);
+            gl.Color(Color.Green);
+            gl.QuadricDrawStyle(i, OpenGL.GLU_FILL);
+            gl.Sphere(i, 2.5, 25, 25);
+            gl.PopMatrix();
+        }
+
         private void EnableLighting()
         {
             // цвет освещения по RGB
@@ -197,7 +229,7 @@ namespace OpenGlApp
             gl.Disable(OpenGL.GL_LIGHT3);
         }
 
-        private void displayTextureFromFile(string path)
+        private void DisplayTextureFromFile(string path)
         {
             TextureStruct Textures = new TextureStruct();
             Textures.CoordX_YText = new double[4, 3] { { 8, 0, 8 }, { 0, 0, 8 }, { 0, 0, 0 }, { 8, 0, 0 } };
@@ -284,7 +316,7 @@ namespace OpenGlApp
             gl.End();
         }
 
-        private void rotateCamera(object sender, EventArgs e)
+        private void RotateCamera(object sender, EventArgs e)
         {
             camAng += camAngDelta;
             camX = camR * Math.Cos(camAng * degToRads);
@@ -292,7 +324,7 @@ namespace OpenGlApp
             openGLControl_Load(sender, e);
         }
 
-        private void moveObject(Direction dir)
+        private void MoveObject(Direction dir)
         {
             switch (dir)
             {
@@ -305,7 +337,7 @@ namespace OpenGlApp
             }
         }
 
-        private void scaleObject(Direction dir)
+        private void ScaleObject(Direction dir)
         {
             switch (dir)
             {
@@ -352,16 +384,16 @@ namespace OpenGlApp
             switch (e.KeyCode)
             {
                 case Keys.A:
-                    moveObject(Direction.LEFT);
+                    MoveObject(Direction.LEFT);
                     break;
                 case Keys.D:
-                    moveObject(Direction.RIGHT);
+                    MoveObject(Direction.RIGHT);
                     break;
                 case Keys.W:
-                    scaleObject(Direction.NEARER);
+                    ScaleObject(Direction.NEARER);
                     break;
                 case Keys.S:
-                    scaleObject(Direction.FARTHER);
+                    ScaleObject(Direction.FARTHER);
                     break;
             }
             openGLControl_Load(sender, e);
